@@ -8,7 +8,7 @@ import logging
 import numpy,sys
 from gensim.models import word2vec
 
-#path="/home/nausheenfatma/NLAproject/lastassignment/text8"
+
 path="text8"
 msg=""
 
