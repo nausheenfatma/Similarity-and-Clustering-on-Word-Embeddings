@@ -12,14 +12,21 @@ from gensim.models import word2vec
 path="text8"
 msg=""
 
+# command line arguments should be like this :
+# python word_similarity.py "delhi"  
+# python word_similarity.py "delhi" "islamabad" "kathmandu"
+# python word_similarity.py -c "country"
+# python word_similarity.py -c "city"
+# python word_similarity.py -c "organization"
+
 if sys.argv[1]=='-c':
     msg="\n\nTop words in %s class..\n "%sys.argv[2]
     if sys.argv[2]=='country':
-        word_class=["india","britain","brazil"]
+        word_class=["india","britain","brazil"] #random country points
     elif sys.argv[2]=='city':
-        word_class=["delhi","tokyo","london"]
+        word_class=["delhi","tokyo","london"] #random city points
     elif sys.argv[2]=='organization':
-        word_class=["unicef","weu","un","oas"]
+        word_class=["unicef","weu","un","oas"] #random organization points
     elif sys.argv[2]=='person':
         word_class=["indira","prakash","gandhi","nehru","pooja"]
 else:
@@ -38,7 +45,7 @@ vocab_vec_dict={}
 
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s',level=logging.INFO)
 
-#####################Training Model#########################################################
+#####################Training Model######################################################################
 
 sentences = word2vec.Text8Corpus('text8')
 model = word2vec.Word2Vec(sentences)
@@ -64,7 +71,7 @@ for line in f:
     j=j+1
 f2.close() 
 
-#############################finding most similar values#################################
+#############################finding most similar values#################################################
 
 #vector 1 is a list variable in which word embeddings of command line arguments would be found and saved 
 vector1=[]
